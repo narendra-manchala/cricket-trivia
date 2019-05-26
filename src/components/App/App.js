@@ -28,10 +28,6 @@ function App() {
     }
   };
 
-  React.useEffect(() => {
-    console.log(result);
-  });
-
   const handleSubmit = () => {
     if (checkAnswered()) {
       evalQuestions();
@@ -45,7 +41,6 @@ function App() {
         notAnswered.push(question.id);
       }
     });
-    console.log(notAnswered);
     setNotAnsweredQIds(notAnswered.length > 0 ? notAnswered : null);
     return notAnswered.length === 0;
   };
@@ -54,14 +49,12 @@ function App() {
     const correctlyAnsweredQIds = [];
     const wrongAnsweredQIds = [];
     questions.forEach(question => {
-      // console.log(question.answer, answers[q])
       if (question.answer === answers[question.id]) {
         correctlyAnsweredQIds.push(question.id);
       } else {
         wrongAnsweredQIds.push(question.id);
       }
     });
-    console.log(correctlyAnsweredQIds, wrongAnsweredQIds);
     setResult({ correctlyAnsweredQIds, wrongAnsweredQIds });
   };
 
